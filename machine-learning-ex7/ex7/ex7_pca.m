@@ -35,8 +35,8 @@ load ('ex7data1.mat');
 plot(X(:, 1), X(:, 2), 'bo');
 axis([0.5 6.5 2 8]); axis square;
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 
 %% =============== Part 2: Principal Component Analysis ===============
@@ -64,8 +64,8 @@ fprintf('Top eigenvector: \n');
 fprintf(' U(:,1) = %f %f \n', U(1,1), U(2,1));
 fprintf('\n(you should expect to see -0.707107 -0.707107)\n');
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 
 %% =================== Part 3: Dimension Reduction ===================
@@ -100,8 +100,8 @@ for i = 1:size(X_norm, 1)
 end
 hold off
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 %% =============== Part 4: Loading and Visualizing Face Data =============
 %  We start the exercise by first loading and visualizing the dataset.
@@ -115,8 +115,8 @@ load ('ex7faces.mat')
 %  Display the first 100 faces in the dataset
 displayData(X(1:100, :));
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 %% =========== Part 5: PCA on Face Data: Eigenfaces  ===================
 %  Run PCA and visualize the eigenvectors which are in this case eigenfaces
@@ -135,8 +135,8 @@ fprintf(['\nRunning PCA on face dataset.\n' ...
 %  Visualize the top 36 eigenvectors found
 displayData(U(:, 1:36)');
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 
 %% ============= Part 6: Dimension Reduction for Faces =================
@@ -147,11 +147,13 @@ fprintf('\nDimension reduction for face dataset.\n\n');
 K = 100;
 Z = projectData(X_norm, U, K);
 
+
 fprintf('The projected data Z has a size of: ')
 fprintf('%d ', size(Z));
+fprintf('\n');
 
-fprintf('\n\nProgram paused. Press enter to continue.\n');
-pause;
+% fprintf('\n\nProgram paused. Press enter to continue.\n');
+% pause;
 
 %% ==== Part 7: Visualization of Faces after PCA Dimension Reduction ====
 %  Project images to the eigen space using the top K eigen vectors and 
@@ -175,8 +177,8 @@ displayData(X_rec(1:100,:));
 title('Recovered faces');
 axis square;
 
-fprintf('Program paused. Press enter to continue.\n');
-pause;
+% fprintf('Program paused. Press enter to continue.\n');
+% pause;
 
 
 %% === Part 8(a): Optional (ungraded) Exercise: PCA for Visualization ===
