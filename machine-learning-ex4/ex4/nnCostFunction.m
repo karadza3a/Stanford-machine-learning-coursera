@@ -62,23 +62,50 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+m1 = size(X, 1);
+X = [ones(m1, 1) X];
+Z2 = X*Theta1';
+A2 = sigmoid(Z2);
 
+m2 = size(A2, 1);
+A2 = [ones(m2, 1) A2];
+Z3  = A2*Theta2';
+A3 = sigmoid(Z3);
+h = A3;
 
+eye_matrix = eye(num_labels);
+y_matrix = eye_matrix(y,:);
 
+J = 0;
 
+for k = 1:num_labels
+    % reg = theta;
+    % reg(1) = 0;
+    J = J - y_matrix(:, k)'*log(h(:, k)) - (1-y_matrix(:, k))'*log( 1 - h(:, k) );
+    
+end
 
+J = J/m;
 
+T1 = Theta1(:, 2:end);
+T2 = Theta2(:, 2:end);
 
+reg = (T1(:)'*T1(:)) + (T2(:)'*T2(:));
+J = J + (reg*lambda)/(2*m);
 
+delta3 = A3 - y_matrix;
+% A2 = A2(:, 2:end);
+Theta2_grad = A2'*delta3;
+Theta2_grad = Theta2_grad';
+Theta2(:, 1) = 0;
+Theta2_grad = Theta2_grad ./ m + (lambda/m) .* Theta2;
 
-
-
-
-
-
-
-
-
+delta2 = (delta3 * Theta2(:, 2:end)) .* sigmoidGradient(Z2);
+% X = X(:, 2:end);
+Theta1_grad = X'*delta2;
+Theta1_grad = Theta1_grad';
+Theta1(:, 1) = 0;
+Theta1_grad = Theta1_grad ./ m + (lambda/m) .* Theta1;
 
 % -------------------------------------------------------------
 
