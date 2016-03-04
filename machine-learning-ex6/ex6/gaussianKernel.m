@@ -16,8 +16,9 @@ sim = 0;
 %
 %
 
-
-
+norm = (x1-x2);
+nsq = (norm'*norm);
+sim = exp(- sum(nsq)/(2*sigma*sigma));
 
 
 
